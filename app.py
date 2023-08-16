@@ -34,7 +34,7 @@ def checkedin(EmpID):
     # currentTime = datetime.now().strftime('%H-%M-%S')
 
     # checkInTime=currentTime.replace("-",":")
-    print(checkindate)
+    # print(checkindate)
     obj.checkIn(EmpID,name,checkindate,checkindate,RefID)
    
     return render_template("checkedout.html",RefID=RefID)
@@ -47,7 +47,7 @@ def chechoutreference():
 
         RefID=request.form.get('checkoutrerefenceid')
 
-        print("-----------------",RefID)
+        # print("-----------------",RefID)
 
         currentTime = datetime.now()
 
@@ -56,8 +56,13 @@ def chechoutreference():
         print(currentTime)
 
         obj.checkout(RefID,currentTime)
+        obj.calculate_time()
+
+
 
     return "checkedOut"
+
+obj.calculate_time()
 
 
 # Run the application if this script is executed directly
