@@ -8,14 +8,14 @@
 <body>
     <h1>Hello world</h1><br><br>
     <script>
-        alert("this is your reference id = ",{{RefID}})
+        alert("this is your reference id = ",{RefID})
     </script>
 
     
     
     <form action="/chechoutreference" method="post">
         <label for="search">Enter your reference ID</label><br><br>
-        <input type="text" id="search" name="checkoutrerefenceid" placeholder="Search...">
+        <input type="text" id="search" name="checkoutrerefenceid" placeholder="Search..." required>
         <button>Checkout</button>
     </form>
 </body>

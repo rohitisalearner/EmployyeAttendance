@@ -65,9 +65,11 @@ class Attedance:
 
         return "updated"
     
+
 #calculating time_______________
 
     def calculate_time(self):
+        time_difference=""
         with conn.cursor() as cur:
             sql = "SELECT CheckinTime, CheckoutTime FROM dailyattendance WHERE EmpId = 8"
             cur.execute(sql)

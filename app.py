@@ -47,20 +47,17 @@ def chechoutreference():
 
         RefID=request.form.get('checkoutrerefenceid')
 
-        # print("-----------------",RefID)
+        print("-----------------",RefID)
 
         currentTime = datetime.now()
 
-        # checkout=currentTime.replace("-",":")
+# checkout=currentTime.replace("-",":")
 
         print(currentTime)
 
         obj.checkout(RefID,currentTime)
-        obj.calculate_time()
 
-
-
-    return "checkedOut"
+    return redirect('/')
 
 obj.calculate_time()
 
