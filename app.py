@@ -22,6 +22,7 @@ def hello_world():
 @app.route("/checkedin/<EmpID>")
 
 def checkedin(EmpID):
+    try:
 
     name = obj.empName(EmpID)
 
@@ -34,7 +35,7 @@ def checkedin(EmpID):
     # currentTime = datetime.now().strftime('%H-%M-%S')
 
     # checkInTime=currentTime.replace("-",":")
-    # print(checkindate)
+    print(checkindate)
     obj.checkIn(EmpID,name,checkindate,checkindate,RefID)
    
     return render_template("checkedout.html",RefID=RefID)
@@ -57,9 +58,7 @@ def chechoutreference():
 
         obj.checkout(RefID,currentTime)
 
-    return redirect('/')
-
-obj.calculate_time()
+    return "checkedOut"
 
 
 # Run the application if this script is executed directly
