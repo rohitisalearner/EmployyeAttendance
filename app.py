@@ -22,22 +22,19 @@ def hello_world():
 @app.route("/checkedin/<EmpID>")
 
 def checkedin(EmpID):
+    try:
 
-    name = obj.empName(EmpID)
+        name = obj.empName(EmpID)
+        RefID = obj.GenerateReferenceId()
+        checkindate = datetime.now()
+        current_time = datetime.now().date()
+        print("=======",current_time)
+        data=obj.checkIn(EmpID, name,current_time, checkindate, RefID)
+        return render_template("checkedout.html")
 
-    RefID = obj.GenerateReferenceId()
-
-    # print(RefID, name)
-    checkindate = datetime.now()
-
-    # print(checkindate)
-    # currentTime = datetime.now().strftime('%H-%M-%S')
-
-    # checkInTime=currentTime.replace("-",":")
-    print(checkindate)
-    obj.checkIn(EmpID,name,checkindate,checkindate,RefID)
-   
-    return render_template("checkedout.html",RefID=RefID)
+    except Exception as e:
+        error_message = f"An error occurred{e}"
+        return render_template("admin/error.html", error_message=error_message)
 
 @app.route('/chechoutreference',methods=['GET','POST'])
 
@@ -57,7 +54,7 @@ def chechoutreference():
 
         obj.checkout(RefID,currentTime)
 
-    return "checkedOut"
+    return redirect('/')
 
 
 # Run the application if this script is executed directly
